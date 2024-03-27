@@ -5,7 +5,7 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 const ProductModel = require('./models/Products')
 const cloudinary = require("cloudinary").v2;
-
+const fileUpload = require('express-fileupload')
 
 
 
@@ -15,6 +15,12 @@ app.use(express.json())
 
 mongoose.connect("mongodb://127.0.0.1:27017/GlassberryCURD");
 
+
+
+
+// app.use(fileUpload({
+//     useTempFiles:true,
+// }))
 
             // Get API 
 
@@ -45,9 +51,14 @@ app.put('/updateProduct/:id', (req,res)=>{
     .catch(err => console.log(err))
 })
 
-                // POST API
+                // POST Request
 
 app.post('/createProduct', (req, res) =>{
+    // console.log(req.body);
+    //  const file = req.files.photo;
+    //  cloudinary.uploader.upload(file.tempFilePath,(err, result)=>{
+    //     console.log(result);
+    //  })   
         ProductModel.create(req.body)
         .then(products => res.json(products))
         .catch(err => res.json(err))
