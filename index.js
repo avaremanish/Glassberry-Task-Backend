@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const dotenv = require('dotenv')
 const ProductModel = require('./models/Products')
+const cloudinary = require("cloudinary").v2;
+
 
 
 
@@ -62,8 +64,6 @@ app.delete('/deleteProduct/:id', (req, res) =>{
           .then((products) => res.json(products))
           .catch((err) => console.log(err));
 })
-
-
 
 
 

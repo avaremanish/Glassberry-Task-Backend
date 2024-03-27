@@ -1,4 +1,11 @@
 const mongoose = require('mongoose')
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: "drw77cdji",
+  api_key: "698641675195992",
+  api_secret: "LHsugYGwvgveoucqkcZe-KZMQSs",
+});
 
 
 
@@ -28,10 +35,21 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+//    images: [
+//     {
+//       url: {
+//         type: String,
+//         required: true,
+//       },
+//       contentType: {
+//         type: String,
+//         required: true,
+//       },
+//     },
+//   ],
   images: [
     {
-      data: Buffer, // Image data as Buffer
-      contentType: String, // Mime type of the image
+      type: String, // Mime type of the image
     },
   ],
   category: {
@@ -54,3 +72,4 @@ const ProductSchema = new mongoose.Schema({
 
 const ProductModel = mongoose.model("products", ProductSchema)
 module.exports = ProductModel 
+
