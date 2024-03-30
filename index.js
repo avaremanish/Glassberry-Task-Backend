@@ -6,6 +6,8 @@ const dotenv = require('dotenv')
 const ProductModel = require('./models/Products')
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require('express-fileupload')
+const multer  = require('multer')
+const upload = multer()
 
 
 
@@ -52,6 +54,8 @@ app.put('/updateProduct/:id', (req,res)=>{
 })
 
                 // POST Request
+
+
 
 app.post('/createProduct', (req, res) =>{
     // console.log(req.body);
